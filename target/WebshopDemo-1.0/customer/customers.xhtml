@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+<ui:composition template="../template.xhtml">
+    <ui:define name="content">
+        <p:dataTable var="customer" value="#{accountController.getAll() }">
+            <p:column headerText="id" colspan="3" style="text-align: left">
+                <h:outputText value="#{accountController.customer.id}"/>
+            </p:column>
+            <p:column headerText="Firstname" colspan="3" style="text-align: left">
+                <h:outputText value="#{accountController.customer.firstName}"/>
+            </p:column>
+            <p:column headerText="Lastname" colspan="3" style="text-align: left">
+                <h:outputText value="#{accountController.customer.lastName}"/>
+            </p:column>
+            <p:column headerText="Phonenumber" colspan="3" style="text-align: left">
+                <h:outputText value="#{accountController.customer.phone}"/>
+            </p:column>
+            <p:column headerText="Email" colspan="3" style="text-align: left">
+                <h:outputText value="#{accountController.customer.email}"/>
+            </p:column>
+            <p:column headerText="Birthdate" colspan="3" style="text-align: left">
+                <h:outputText value="#{accountController.customer.birth}"/>
+            </p:column>
+        </p:dataTable>
+    </ui:define>
+</ui:composition>
+</html>

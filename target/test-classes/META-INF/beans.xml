@@ -1,0 +1,8 @@
+<beans xmlns="http://xmlns.jcp.org/xml/ns/javaee" bean-discovery-mode="all">
+    <alternatives>
+        <class>no.phasfjo.infrastructure.generator.MockGenerator</class>
+    </alternatives>
+    <interceptors>
+        <class>no.phasfjo.infrastructure.logger.LoggingInterceptor</class>
+    </interceptors>
+</beans>

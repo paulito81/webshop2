@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui" xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:font-size="http://java.sun.com/jsp/jstl/functions"
+>
+<ui:composition template="../template.xhtml">
+    <ui:define name="content">
+        <h:form>
+            <p:panel header="Register User">
+                <p:messages id="message" showDetail="true" autoUpdate="true" closable="true"/>
+                <p:panelGrid columns="2" columnClasses="label, value">
+
+                    <h:outputText style="font-size: large" value="First name:"/>
+                    <h:inputText style="font-size: large" id="firstName"
+                                 value="#{accountController.customer.firstName}"
+                                 required="true" label="First name" size="21"/>
+
+                    <h:outputText style="font-size: large" value="Last name:"/>
+                    <h:inputText style="font-size: large" id="lastName" value="#{accountController.customer.lastName}"
+                                 required="true" label="Last name" size="21"/>
+
+                    <h:outputText style="font-size: large" value="Email:"/>
+                    <h:inputText style="font-size: large" id="email" value="#{accountController.customer.email}"
+                                 required="true" label="Email" size="21"/>
+
+                    <h:outputText style="font-size: large" value="Phone:"/>
+                    <h:inputText style="font-size: large" id="phone"
+                                 value="#{accountController.customer.phone}"
+                                 required="true" label="Phone" size="21"/>
+                </p:panelGrid>
+
+                <p:growl id="msgs" showDetail="true"/>
+                <h:panelGrid columns="2" cellpadding="5" width="400">
+                    <h:outputText style="font-size: large" for="popup" value="Birthdate:"/>
+                    <p:calendar id="popup" value="#{calendarView.date2}"/>
+
+                    <p:dialog modal="true" resizable="false" header="Values" widgetVar="dlg" showEffect="fold">
+                        <h:inputText value="#{calendarView.date2}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:inputText>
+                    </p:dialog>
+                </h:panelGrid>
+            </p:panel>
+
+            <!-- TODO PROBLEMS WITH CONTROLLER, BIRTHDATE, NOT GETTING CUSTOMERS -->
+
+            <p:panel header="Register Address">
+                <p:panelGrid columns="2" columnClasses="label, value">
+
+                    <h:outputText style="font-size: large" value="City"/>
+                    <h:inputText style="font-size: large" id="city"
+                                 value="#{addressController.address.city}" required="true" label="City"/>
+
+                    <h:outputText style="font-size: large" value="Street name"/>
+                    <h:inputText style="font-size: large" id="street"
+                                 value="#{addressController.address.street}"
+                                 required="true" label="Street name"/>
+
+                    <h:outputText style="font-size: large" value="State:"/>
+                    <h:inputText style="font-size: large" id="state"
+                                 value="#{addressController.address.state}"
+                                 required="false" label="State"/>
+
+                    <h:outputText style="font-size: large" value="Zipcode:"/>
+                    <h:inputText style="font-size: large" id="zipcode"
+                                 value="#{addressController.address.zipcode}"
+                                 required="true" label="Zipcode"/>
+
+                    <h:outputText style="font-size: large" value="Country:"/>
+                    <h:inputText style="font-size: large" id="country"
+                                 value="#{addressController.address.country}"
+                                 required="true" label="Country"/>
+                </p:panelGrid>
+            </p:panel>
+
+            <p:panel header="Register Login">
+                <p:panelGrid columns="2" columnClasses="label, value">
+
+                    <h:outputText style="font-size: large" value="User name:"/>
+                    <h:inputText style="font-size: large" id="username"
+                                 value="#{accountController.login.username}"
+                                 required="true" label="User name" size="21"/>
+
+                    <h:outputText style="font-size: large" value="Password:"/>
+                    <h:inputSecret style="font-size: large" id="password"
+                                   value="#{accountController.login.password}"
+                                   required="true" label="Password" size="21"/>
+                </p:panelGrid>
+            </p:panel>
+            <br/>
+            <div align="center">
+                <p:commandButton style="font-size: large" update="msgs" icon="ui-icon-check" value="Submit"
+                                 onclick="window.open('/WebshopDemo-1.0/customer/customers.jsf')"
+                                 action="#{accountController.persist()}"/>
+            </div>
+        </h:form>
+    </ui:define>
+</ui:composition>
+</html>

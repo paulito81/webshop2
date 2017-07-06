@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: no.phasfjo.dto.item.ItemTwoTest
+-------------------------------------------------------------------------------
+Tests run: 14, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.578 sec - in no.phasfjo.dto.item.ItemTwoTest

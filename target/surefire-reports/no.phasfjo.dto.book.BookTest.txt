@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: no.phasfjo.dto.book.BookTest
+-------------------------------------------------------------------------------
+Tests run: 15, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.572 sec - in no.phasfjo.dto.book.BookTest

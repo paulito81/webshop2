@@ -1,0 +1,16 @@
+-------------------------------------------------------------------------------
+Test set: no.phasfjo.dto.orderline.OrderLine2Test
+-------------------------------------------------------------------------------
+Tests run: 9, Failures: 1, Errors: 2, Skipped: 0, Time elapsed: 0.139 sec <<< FAILURE! - in no.phasfjo.dto.orderline.OrderLine2Test
+shouldRaiseConstraintViolationsCausedByInvalidCreationDate(no.phasfjo.dto.orderline.OrderLine2Test)  Time elapsed: 0.008 sec  <<< ERROR!
+java.lang.IllegalArgumentException: Not a timezone
+	at no.phasfjo.dto.orderline.OrderLine2Test.shouldRaiseConstraintViolationsCausedByInvalidCreationDate(OrderLine2Test.java:81)
+
+shouldRaiseConstraintViolationsCausedByInvalidPaymentDate(no.phasfjo.dto.orderline.OrderLine2Test)  Time elapsed: 0.006 sec  <<< ERROR!
+java.lang.IllegalArgumentException: Not a timezone
+	at no.phasfjo.dto.orderline.OrderLine2Test.shouldRaiseConstraintViolationsCausedByInvalidPaymentDate(OrderLine2Test.java:104)
+
+shouldRaiseConstraintViolationsCausedByInvalidDeliveryDate(no.phasfjo.dto.orderline.OrderLine2Test)  Time elapsed: 0.014 sec  <<< FAILURE!
+java.lang.AssertionError: expected:<1> but was:<3>
+	at no.phasfjo.dto.orderline.OrderLine2Test.shouldRaiseConstraintViolationsCausedByInvalidDeliveryDate(OrderLine2Test.java:116)
+

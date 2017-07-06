@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui" xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <link href="_css/main.css" rel="stylesheet" media="screen"/>
+</h:head>
+<h:body>
+    <h:form>
+        <p:menubar>
+            <p:submenu label="Products">
+
+                <p:submenu label="Android">
+                    <p:menuitem value="Apps" url="/applications/android/android-program.jsf"/>
+                    <p:menuitem value="Games" url="/applications/android/android_games.html"/>
+                </p:submenu>
+
+                <p:submenu label="Java">
+                    <p:menuitem value="EE7 Apps" url="/applications/java/java-ee7-program.jsf"/>
+                </p:submenu>
+
+                <p:submenu label="Swift">
+                    <p:menuitem value="Apps" url="/applications/ios/ios-program.jsf"/>
+                    <p:menuitem value="Games" url="/applications/ios/ios-games.jsf"/>
+                </p:submenu>
+            </p:submenu>
+
+            <p:submenu label="CustomerService">
+                <p:menuitem value="Payment" url="/support/customer-service-payment.jsf"/>
+                <p:menuitem value="ProductHelp" url="/support/customer-service-product-help.jsf"/>
+                <p:menuitem value="Questions" url="/support/customer-service-QA.jsf"/>
+            </p:submenu>
+
+            <p:submenu label="Home">
+                <p:menuitem value="Home" url="/index.jsf"/>
+            </p:submenu>
+
+            <f:facet name="options">
+                <p:inputText style="margin-right:10px" placeholder="Search"/>
+                <p:commandButton type="button" value="Register" icon="ui-icon-extlink"
+                                 onclick="window.open('/webshop/customer/customer-registration.jsf');"/>
+                <p:commandButton type="button" value="Login" icon="ui-icon-extlink"
+                                 onclick="window.open('/webshop/login/login.jsf');"/>
+            </f:facet>
+        </p:menubar>
+    </h:form>
+    <br/>
+    <ui:insert name="content">Pauls webshop @2017</ui:insert>
+    <br/>
+
+    <p style="text-align: center">All rights by &copy; Paul Hasfjord</p>
+</h:body>
+
+<script type="text/javascript">
+    function handleLoginRequest(xhr, status, args) {
+        if (args.validationFailed || !args.loggedIn) {
+            PF('dlg').jq.effect("shake", {times: 5}, 100);
+        }
+        else {
+            PF('dlg').hide();
+            $('#loginLink').fadeOut();
+        }
+    }
+</script>
+
+</html>
+

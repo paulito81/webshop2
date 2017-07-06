@@ -1,0 +1,12 @@
+-------------------------------------------------------------------------------
+Test set: no.phasfjo.dto.order.OrderTest
+-------------------------------------------------------------------------------
+Tests run: 8, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.146 sec <<< FAILURE! - in no.phasfjo.dto.order.OrderTest
+shouldRaiseConstraintViolationsCausedByInvalidDeliveryDateTest(no.phasfjo.dto.order.OrderTest)  Time elapsed: 0.03 sec  <<< ERROR!
+java.lang.IllegalArgumentException: Not a timezone
+	at no.phasfjo.dto.order.OrderTest.shouldRaiseConstraintViolationsCausedByInvalidDeliveryDateTest(OrderTest.java:213)
+
+shouldRaiseConstraintViolationsCausedByInvalidCreationDateTest(no.phasfjo.dto.order.OrderTest)  Time elapsed: 0.013 sec  <<< ERROR!
+java.lang.IllegalArgumentException: Not a timezone
+	at no.phasfjo.dto.order.OrderTest.shouldRaiseConstraintViolationsCausedByInvalidCreationDateTest(OrderTest.java:117)
+
