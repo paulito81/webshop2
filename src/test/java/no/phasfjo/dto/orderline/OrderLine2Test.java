@@ -62,7 +62,7 @@ public class OrderLine2Test {
     @Test
     public void shouldRaiseConstraintViolationsCausedByInvalidCreationDate() throws Exception{
         Date date = new Date("2/2/2021 07:00:00");
-        OrderLine2 orderLine = new OrderLine2(date, new Date("02/27/2020 09:00:00"), new Date("02/29/2020 10:00:00"), 1900d, 1, "MACBOOK PRO 2020 10ghz");
+        OrderLine2 orderLine = new OrderLine2(date, new Date("02/27/2020 09:00:00"), new Date("02/29/2019 10:00:00"), 1900d, 1, "MACBOOK PRO 2020 10ghz");
         orderLine.setId(1);
         Set<ConstraintViolation<OrderLine2>> violations = validator.validate(orderLine);
         assertEquals(1, violations.size());
@@ -72,10 +72,10 @@ public class OrderLine2Test {
                 assertEquals("OrderLine2{id=1, creationDate=Tue Feb 02 08:00:00 EST 2021, paymentDate=Thu Feb 27 10:00:00 EST 2020, deliveryDate=Sat Feb 29 11:00:00 EST 2020, unitPrice=1900.0, quantity=1, item='MACBOOK PRO 2020 10ghz'}", violations.iterator().next().getInvalidValue().toString());
                 break;
             case "Central Eastern Time":
-                assertEquals("OrderLine2{id=1, creationDate=Tue Feb 02 13:00:00 CET 2021, paymentDate=Thu Feb 27 15:00:00 CET 2020, deliveryDate=Sat Feb 29 16:00:00 CET 2020, unitPrice=1900.0, quantity=1, item='MACBOOK PRO 2020 10ghz'}", violations.iterator().next().getInvalidValue().toString());
+                assertEquals("OrderLine2{id=1, creationDate=Tue Feb 02 13:00:00 CET 2021, paymentDate=Thu Feb 27 15:00:00 CET 2020, deliveryDate=Fri Feb 29 16:00:00 CET 2020, unitPrice=1900.0, quantity=1, item='MACBOOK PRO 2020 10ghz'}", violations.iterator().next().getInvalidValue().toString());
                 break;
             case "Central European Time":
-                assertEquals("OrderLine2{id=1, creationDate=Tue Feb 02 07:00:00 CET 2021, paymentDate=Thu Feb 27 09:00:00 CET 2020, deliveryDate=Sat Feb 29 10:00:00 CET 2020, unitPrice=1900.0, quantity=1, item='MACBOOK PRO 2020 10ghz'}", violations.iterator().next().getInvalidValue().toString());
+                assertEquals("OrderLine2{id=1, creationDate=Tue Feb 02 07:00:00 CET 2021, paymentDate=Thu Feb 27 09:00:00 CET 2020, deliveryDate=Fri Mar 01 10:00:00 CET 2019, unitPrice=1900.0, quantity=1, item='MACBOOK PRO 2020 10ghz'}", violations.iterator().next().getInvalidValue().toString());
                 break;
             case "Central Standard Time":
                 assertEquals("OrderLine2{id=1, creationDate=Tue Feb 02 07:00:00 CST 2021, paymentDate=Thu Feb 27 09:00:00 CST 2020, deliveryDate=Sat Feb 29 10:00:00 CST 2020, unitPrice=1900.0, quantity=1, item='MACBOOK PRO 2020 10ghz'}", violations.iterator().next().getInvalidValue().toString());
@@ -116,7 +116,7 @@ public class OrderLine2Test {
     @Test
     public void shouldRaiseConstraintViolationsCausedByInvalidDeliveryDate() throws Exception{
 
-        OrderLine2 orderLine = new OrderLine2(new Date("2/2/2018 08:00:00"), new Date("02/20/2018 09:00:00"), new Date("02/19/2018 10:00:00"), 1900d, 1, "MACBOOK PRO 2020 10ghz");
+        OrderLine2 orderLine = new OrderLine2(new Date("2/2/2020 08:00:00"), new Date("02/20/2020 09:00:00"), new Date("02/19/2020 10:00:00"), 1900d, 1, "MACBOOK PRO 2020 10ghz");
         orderLine.setId(1);
         Set<ConstraintViolation<OrderLine2>> violations = validator.validate(orderLine);
         assertEquals(1, violations.size());
@@ -128,7 +128,7 @@ public class OrderLine2Test {
                 assertEquals("OrderLine2{id=1, creationDate=Thu Feb 02 14:00:00 CET 2017, paymentDate=Mon Feb 20 15:00:00 CET 2017, deliveryDate=Sun Feb 19 16:00:00 CET 2017, unitPrice=1900.0, quantity=1, item='MACBOOK PRO 2020 10ghz'}", violations.iterator().next().getInvalidValue().toString());
                 break;
             case "Central European Time":
-                assertEquals("OrderLine2{id=1, creationDate=Fri Feb 02 08:00:00 CET 2018, paymentDate=Tue Feb 20 09:00:00 CET 2018, deliveryDate=Mon Feb 19 10:00:00 CET 2018, unitPrice=1900.0, quantity=1, item='MACBOOK PRO 2020 10ghz'}", violations.iterator().next().getInvalidValue().toString());
+                assertEquals("OrderLine2{id=1, creationDate=Sun Feb 02 08:00:00 CET 2020, paymentDate=Thu Feb 20 09:00:00 CET 2020, deliveryDate=Wed Feb 19 10:00:00 CET 2020, unitPrice=1900.0, quantity=1, item='MACBOOK PRO 2020 10ghz'}", violations.iterator().next().getInvalidValue().toString());
                 break;
             case "Central Standard Time":
                 assertEquals("OrderLine2{id=1, creationDate=Thu Feb 02 08:00:00 CST 2017, paymentDate=Mon Feb 20 09:00:00 CST 2017, deliveryDate=Sun Feb 19 10:00:00 CST 2017, unitPrice=1900.0, quantity=1, item='MACBOOK PRO 2020 10ghz'}", violations.iterator().next().getInvalidValue().toString());

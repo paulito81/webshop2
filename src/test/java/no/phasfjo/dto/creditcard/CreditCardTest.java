@@ -60,7 +60,7 @@ public class CreditCardTest {
 
     @Test
     public void shouldRaiseConstraintViolationsCausedByInvalidCardNumberNotMatchStartWith99() throws Exception {
-        CreditCard creditCard1 = new CreditCard("993456789065490", new Date("12/12/2018 20:00:00 GMT"), "123", "AMERICAN_EXPRESS");
+        CreditCard creditCard1 = new CreditCard("993456789065490", new Date("12/12/2020 20:00:00 GMT"), "123", "AMERICAN_EXPRESS");
         Set<ConstraintViolation<CreditCard>> violations = validator.validate(creditCard1);
         assertEquals(1, violations.size());
         assertEquals("Invalid Amex paymentCard combination mnust start with 34 or 37 and have 15 digits", violations.iterator().next().getMessage());
@@ -81,7 +81,7 @@ public class CreditCardTest {
 
     @Test
     public void shouldRaiseConstraintViolationsCausedByInvalidCvcHasTwoNumbers() throws Exception {
-        CreditCard creditCard3 = new CreditCard("343456789065490", new Date("12/12/2018 20:00:00 GMT"), "12", "AMERICAN_EXPRESS");
+        CreditCard creditCard3 = new CreditCard("343456789065490", new Date("12/12/2020 20:00:00 GMT"), "12", "AMERICAN_EXPRESS");
         Set<ConstraintViolation<CreditCard>> violations = validator.validate(creditCard3);
         assertEquals(1, violations.size());
         assertEquals("Invalid ccv must contain three digits", violations.iterator().next().getMessage());
@@ -91,7 +91,7 @@ public class CreditCardTest {
 
     @Test
     public void shouldRaiseConstraintViolationsCausedByInvalidCardTitle() throws Exception {
-        CreditCard creditCard3 = new CreditCard("343456789065490", new Date("12/12/2018 20:00:00 GMT"), "123", "AMEX");
+        CreditCard creditCard3 = new CreditCard("343456789065490", new Date("12/12/2020 20:00:00 GMT"), "123", "AMEX");
         Set<ConstraintViolation<CreditCard>> violations = validator.validate(creditCard3);
         assertEquals(1, violations.size());
         assertEquals("Invalid card type is not in the card list", violations.iterator().next().getMessage());

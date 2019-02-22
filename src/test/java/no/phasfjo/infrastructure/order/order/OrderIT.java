@@ -27,6 +27,11 @@ public class OrderIT {
     private JpaOrderLineDao jpaOrderLineDao;
     private JpaOrderDao jpaOrderDao;
 
+    /*
+    TODO
+    TESTS WILL CRASH IN THE FUTURE DUE TO DATE ISSUES
+     */
+
     @Before
     public void setup() throws Exception {
         factory = Persistence.createEntityManagerFactory("TEST");
@@ -59,8 +64,8 @@ public class OrderIT {
         Date date = new Date();
         order.setQuantity(1);
         order.setCreationDate(date);
-        order.setPaymentDate(new Date("12/10/2018 22:00:20 GMT"));
-        order.setDeliveryDate(new Date("12/12/2018 20:00:10 GMT"));
+        order.setPaymentDate(new Date("12/10/2019 22:00:20 GMT"));
+        order.setDeliveryDate(new Date("12/12/2019 20:00:10 GMT"));
         order.setTotalAmount(10d);
 
         OrderLine oL = new OrderLine("CD med Jackson", 10d, 1);
@@ -96,9 +101,9 @@ public class OrderIT {
         //ONE
         Date date = new Date(); //NB! TIMESTAMP WILL CRASH TEST IN FUTURE
 
-        Date payment = new Date("12/10/2018 22:00:20");
+        Date payment = new Date("12/10/2019 22:00:20");
         Integer quantity = 1;
-        Date delivery = new Date("12/12/2018 20:00:10");
+        Date delivery = new Date("12/12/2020 20:00:10");
         Double amount = 10d;
 
         OrderLine orderLine = new OrderLine("Stol", 100d, 1);
@@ -117,9 +122,9 @@ public class OrderIT {
         //TWO
         Date create2 = new Date();        //NB! TIMESTAMP WILL CRASH TEST IN FUTURE
 
-        Date payment2 = new Date("12/11/2017 22:00:20 GMT");
+        Date payment2 = new Date("12/11/2019 22:00:20 GMT");
         Integer quantity2 = 2;
-        Date delivery2 = new Date("12/14/2017 20:00:10 GMT");
+        Date delivery2 = new Date("12/14/2020 20:00:10 GMT");
         Double amount2 = 100d;
 
         OrderLine orderLine5 = new OrderLine("Bord", 10d, 2);
@@ -174,7 +179,7 @@ public class OrderIT {
                 assertNotEquals(two.getCreationDate().toString(), "Sat Dec 04 20:36:16 CST 2018");  // Create a new time at start
                 break;
             case "Central European Time":
-                assertEquals(one.getPaymentDate().toString(), "Mon Dec 10 22:00:20 CET 2018");
+                assertEquals(one.getPaymentDate().toString(), "Tue Dec 10 22:00:20 CET 2019");
                 assertNotEquals(two.getDeliveryDate().toString(), "Wed Dec 14 20:00:10 CET 2018");   // CST time is -6hour
                 assertNotEquals(two.getCreationDate().toString(), "Sat Dec 04 20:36:16 CET 2018");  // Create a new time at start
                 break;
@@ -198,7 +203,7 @@ public class OrderIT {
         List<OrderLine> line2s = new ArrayList<>();
         line2s.add(orderLine);
 
-        Order order = new Order(date, 100d, new Date("12/4/2017 14:06:20 GMT"), new Date("12/6/2017 22:00:20 GMT"), 1, line2s);
+        Order order = new Order(date, 100d, new Date("12/4/2019 14:06:20 GMT"), new Date("12/6/2019 22:00:20 GMT"), 1, line2s);
         order.setOrderLines(line2s);
 
         entityManager.getTransaction().begin();
@@ -211,8 +216,8 @@ public class OrderIT {
 
         change.setTotalAmount(200d);
         change.setQuantity(2);
-        change.setPaymentDate(new Date("12/09/2017 22:00:20 GMT"));
-        change.setDeliveryDate(new Date("12/10/2017 10:00:09"));
+        change.setPaymentDate(new Date("12/09/2019 22:00:20 GMT"));
+        change.setDeliveryDate(new Date("12/10/2019 10:00:09"));
 
         entityManager.getTransaction().begin();
         boolean updated = jpaOrderDao.update(change);
@@ -222,8 +227,8 @@ public class OrderIT {
         assertTrue(updated);
         assertEquals(jpaOrderDao.findById(50).getQuantity().toString(), "2");
         assertTrue(jpaOrderDao.findById(50).getTotalAmount() == 200);
-        assertNotSame(order.getDeliveryDate(), ("12/6/2016 22:00:20 GMT"));
-        assertNotEquals(order.getPaymentDate(), ("12/4/2016 14:06:20 GMT"));
+        assertNotSame(order.getDeliveryDate(), ("12/6/2019 22:00:20 GMT"));
+        assertNotEquals(order.getPaymentDate(), ("12/4/2019 14:06:20 GMT"));
     }
 
     @Test
@@ -234,7 +239,7 @@ public class OrderIT {
         OrderLine orderLine = new OrderLine("Ball", 10d, 1);
         List<OrderLine> line2s = new ArrayList<>();
         line2s.add(orderLine);
-        Order order = new Order(date, 100d, new Date("12/5/2017 14:06:20 GMT"), new Date("12/6/2017 22:00:20 GMT"), 1, line2s);
+        Order order = new Order(date, 100d, new Date("12/5/2019 14:06:20 GMT"), new Date("12/6/2019 22:00:20 GMT"), 1, line2s);
 
         order.setOrderLines(line2s);
         entityManager.getTransaction().begin();
@@ -247,7 +252,7 @@ public class OrderIT {
         assertEquals(result.getId(), 50);
         assertTrue(result.getOrderLines().contains(orderLine));
         //TIMESTAMP IS SHIFTING
-        assertNotEquals(jpaOrderDao.getAll(), "[Order{id=50, creationDate=Sun Dec 04 23:29:16 CET 2016, totalAmount=100.0, paymentDate=Tue Dec 05 15:06:20 CET 2017, deliveryDate=Wed Dec 06 23:00:20 CET 2017, quantity=1, orderLines=[OrderLine{id=101, item='Ball', unitPrice=10.0, quantity=1]}]");
+        assertNotEquals(jpaOrderDao.getAll(), "[Order{id=50, creationDate=Sun Dec 04 23:29:16 CET 2019, totalAmount=100.0, paymentDate=Tue Dec 05 15:06:20 CET 2019, deliveryDate=Wed Dec 06 23:00:20 CET 2019, quantity=1, orderLines=[OrderLine{id=101, item='Ball', unitPrice=10.0, quantity=1]}]");
         assertTrue(result.getId() > 1);
     }
 
@@ -259,7 +264,7 @@ public class OrderIT {
         OrderLine orderLine = new OrderLine("Ball", 10d, 1);
         List<OrderLine> line2s = new ArrayList<>();
         line2s.add(orderLine);
-        Order order = new Order(date, 100d, new Date("12/4/2017 14:06:20 GMT"), new Date("12/6/2017 22:00:20 GMT"), 1, line2s);
+        Order order = new Order(date, 100d, new Date("12/4/2019 14:06:20 GMT"), new Date("12/6/2019 22:00:20 GMT"), 1, line2s);
 
         order.setOrderLines(line2s);
         entityManager.getTransaction().begin();

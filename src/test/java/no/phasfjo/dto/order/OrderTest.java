@@ -18,7 +18,12 @@ import static org.junit.Assert.assertEquals;
  */
 public class OrderTest {
 
-       private Validator validator;
+    /*
+    TODO
+    ALL TESTS WILL FAIL IN THE FUTURE BECAUSE OF THE DATE ISSUES!
+     */
+
+    private Validator validator;
     private OrderLine firstOrder;
 
     @Before
@@ -62,8 +67,8 @@ public class OrderTest {
 
         Date creationDate = new Date();
         Double price = 10d;
-        Date paymentDate = new Date("12/10/2017 20:00:00 GMT");
-        Date deliveryDate = new Date("12/12/2017 20:00:00 GMT");
+        Date paymentDate = new Date("12/10/2019 20:00:00 GMT");
+        Date deliveryDate = new Date("12/12/2019 20:00:00 GMT");
         Integer quantity = 1;
 
         List<OrderLine> listOfThings = new ArrayList<>();
@@ -87,8 +92,8 @@ public class OrderTest {
 
         Date creationDate = new Date("12/20/2026 10:27:00 GMT");    //Violations date In the future @Past @Itemm fail
         Double price = 10d;
-        Date paymentDate = new Date("12/10/2017 20:00:00 GMT");
-        Date deliveryDate = new Date("12/12/2017 20:00:00 GMT");
+        Date paymentDate = new Date("12/10/2019 20:00:00 GMT");
+        Date deliveryDate = new Date("12/12/2019 20:00:00 GMT");
         Integer quantity = 1;
 
         List<OrderLine> listOfThings = new ArrayList<>();
@@ -111,7 +116,7 @@ public class OrderTest {
                 assertEquals("Order{id=1, creationDate=Sun Dec 20 11:27:00 CET 2026, totalAmount=10.0, paymentDate=Sun Dec 10 21:00:00 CET 2017, deliveryDate=Tue Dec 12 21:00:00 CET 2017, quantity=1, orderLines=[OrderLine{id=1, item='Ball', unitPrice=10.0, quantity=1}]}", violations.iterator().next().getInvalidValue().toString());
                 break;
             case "Central European Time":
-                assertEquals("Order{id=1, creationDate=Sun Dec 20 11:27:00 CET 2026, totalAmount=10.0, paymentDate=Sun Dec 10 21:00:00 CET 2017, deliveryDate=Tue Dec 12 21:00:00 CET 2017, quantity=1, orderLines=[OrderLine{id=1, item='Ball', unitPrice=10.0, quantity=1}]}", violations.iterator().next().getInvalidValue().toString());
+                assertEquals("Order{id=1, creationDate=Sun Dec 20 11:27:00 CET 2026, totalAmount=10.0, paymentDate=Tue Dec 10 21:00:00 CET 2019, deliveryDate=Thu Dec 12 21:00:00 CET 2019, quantity=1, orderLines=[OrderLine{id=1, item='Ball', unitPrice=10.0, quantity=1}]}", violations.iterator().next().getInvalidValue().toString());
                 break;
             case "Central Standard Time":
                 assertEquals("Order{id=1, creationDate=Sun Dec 20 04:27:00 CST 2026, totalAmount=10.0, paymentDate=Sun Dec 10 14:00:00 CST 2017, deliveryDate=Tue Dec 12 14:00:00 CST 2017, quantity=1, orderLines=[OrderLine{id=1, item='Ball', unitPrice=10.0, quantity=1}]}", violations.iterator().next().getInvalidValue().toString());
@@ -128,8 +133,8 @@ public class OrderTest {
 
         Date creationDate = new Date();
         Double price = 0d;                                              //Violations price is 0
-        Date paymentDate = new Date("12/20/2017 20:00:00 GMT");
-        Date deliveryDate = new Date("12/22/2017 18:00:00 GMT");
+        Date paymentDate = new Date("12/20/2019 20:00:00 GMT");
+        Date deliveryDate = new Date("12/22/2019 18:00:00 GMT");
         Integer quantity = 2;
         List<OrderLine> listOfThings = new ArrayList<>();
         firstOrder.setItem("Ball");
@@ -155,7 +160,7 @@ public class OrderTest {
         Date creationDate = new Date();
         Double price = 14d;
         Date paymentDate = new Date("11/20/2016 10:10:10 GMT");         // Violations date is after creation date and fail @past test
-        Date deliveryDate = new Date("12/13/2017 19:15:00 GMT");
+        Date deliveryDate = new Date("12/13/2019 19:15:00 GMT");
         Integer quantity = 1;
 
         List<OrderLine> listOfThings = new ArrayList<>();
@@ -186,10 +191,10 @@ public class OrderTest {
     @Test
     public void shouldRaiseConstraintViolationsCausedByInvalidDeliveryDateTest() throws Exception {
 
-        Date creationDate = new Date("01/01/2017 10:00:00 GMT");
+        Date creationDate = new Date("01/01/2019 10:00:00 GMT");
         Double price = 14d;
-        Date paymentDate = new Date("12/12/2017 10:10:10 GMT");
-        Date deliveryDate = new Date("11/22/2017 19:15:00 GMT");         // Violations date is before payment date and fail @past test
+        Date paymentDate = new Date("12/12/2019 10:10:10 GMT");
+        Date deliveryDate = new Date("11/22/2019 19:15:00 GMT");         // Violations date is before payment date and fail @past test
         Integer quantity = 1;
 
         List<OrderLine> listOfThings = new ArrayList<>();
@@ -207,7 +212,7 @@ public class OrderTest {
                 assertEquals("Order{id=1, creationDate=Sun Jan 01 5:00:00 EST 2017, totalAmount=14.0, paymentDate=Tue Dec 12 5:10:10 EST 2017, deliveryDate=Wed Nov 22 14:15:00 EST 2017, quantity=1, orderLines=[OrderLine{id=0, item='Ball', unitPrice=10.0, quantity=1}]}", violations.iterator().next().getInvalidValue().toString());
                 break;
             case "Central European Time":
-                assertEquals("Order{id=1, creationDate=Sun Jan 01 11:00:00 CET 2017, totalAmount=14.0, paymentDate=Tue Dec 12 11:10:10 CET 2017, deliveryDate=Wed Nov 22 20:15:00 CET 2017, quantity=1, orderLines=[OrderLine{id=0, item='Ball', unitPrice=10.0, quantity=1}]}", violations.iterator().next().getInvalidValue().toString());
+                assertEquals("Order{id=1, creationDate=Tue Jan 01 11:00:00 CET 2019, totalAmount=14.0, paymentDate=Thu Dec 12 11:10:10 CET 2019, deliveryDate=Fri Nov 22 20:15:00 CET 2019, quantity=1, orderLines=[OrderLine{id=0, item='Ball', unitPrice=10.0, quantity=1}]}", violations.iterator().next().getInvalidValue().toString());
                 break;
             case "Central Eastern Time":
                 assertEquals("Order{id=1, creationDate=Sun Jan 01 11:00:00 CET 2017, totalAmount=14.0, paymentDate=Tue Dec 12 11:10:10 CET 2017, deliveryDate=Wed Nov 22 20:15:00 CET 2017, quantity=1, orderLines=[OrderLine{id=0, item='Ball', unitPrice=10.0, quantity=1}]}", violations.iterator().next().getInvalidValue().toString());
@@ -226,8 +231,8 @@ public class OrderTest {
     public void shouldRaiseConstraintViolationsCausedByInvalidQualityTest() throws Exception {
         Date creationDate = new Date();
         Double price = 14d;
-        Date paymentDate = new Date("12/13/2017 10:10:10 GMT");
-        Date deliveryDate = new Date("12/14/2017 19:15:00 GMT");
+        Date paymentDate = new Date("12/13/2019 10:10:10 GMT");
+        Date deliveryDate = new Date("12/14/2019 19:15:00 GMT");
         Integer quantity = 0;                                       //Violations price is 0
 
         List<OrderLine> listOfThings = new ArrayList<>();

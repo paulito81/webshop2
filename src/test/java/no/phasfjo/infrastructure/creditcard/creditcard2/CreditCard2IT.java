@@ -39,7 +39,7 @@ public class CreditCard2IT {
     @Test
     public void peristNewCreditCardTest() throws Exception {
 
-        CreditCard2 creditCard2 = new CreditCard2("343456789065436", new Date("12/12/2018 20:00:00 GMT"), "333", CreditcardType.AMERICAN_EXPRESS);
+        CreditCard2 creditCard2 = new CreditCard2("343456789065436", new Date("12/12/2020 20:00:00 GMT"), "333", CreditcardType.AMERICAN_EXPRESS);
         entityManager.getTransaction().begin();
         CreditCard2 result = jpaCreditCardDao.persist(creditCard2);
         entityManager.getTransaction().commit();
@@ -51,7 +51,7 @@ public class CreditCard2IT {
     @Test
     public void createAndDeleteACreditCardTest() throws Exception {
         //CREATE
-        CreditCard2 creditCard2 = new CreditCard2("343456789065436", new Date("12/12/2018 20:00:00 GMT"), "333", CreditcardType.AMERICAN_EXPRESS);
+        CreditCard2 creditCard2 = new CreditCard2("343456789065436", new Date("12/12/2020 20:00:00 GMT"), "333", CreditcardType.AMERICAN_EXPRESS);
         entityManager.getTransaction().begin();
         CreditCard2 result = jpaCreditCardDao.persist(creditCard2);
         entityManager.getTransaction().commit();
@@ -69,16 +69,16 @@ public class CreditCard2IT {
     @Test
     public void createTenNewCreditCardGetAllTest() throws Exception {
         //CREATE
-        CreditCard2 creditCard = new CreditCard2("343456789065436", new Date("12/12/2018 20:00:00 GMT"), "333", CreditcardType.AMERICAN_EXPRESS);
-        CreditCard2 creditCard2 = new CreditCard2("6541890929394123", new Date("12/12/2017 20:00:00 GMT"), "444", CreditcardType.BCG_GLOBAL);
-        CreditCard2 creditCard3 = new CreditCard2("38998374783932", new Date("12/12/2019 10:00:00 GMT"), "123", CreditcardType.CARTE_BLANCHE);
-        CreditCard2 creditCard4 = new CreditCard2("30534958493821", new Date("12/9/2020 11:00:00 GMT"), "221", CreditcardType.DINERS_CLUB);
-        CreditCard2 creditCard5 = new CreditCard2("6521394792349124", new Date("12/11/2017 21:00:00 GMT"), "984", CreditcardType.DISCOVERY);
-        CreditCard2 creditCard6 = new CreditCard2("213183749245632", new Date("12/10/2017 22:00:00 GMT"), "032", CreditcardType.JCB);
+        CreditCard2 creditCard = new CreditCard2("343456789065436", new Date("12/12/2021 20:00:00 GMT"), "333", CreditcardType.AMERICAN_EXPRESS);
+        CreditCard2 creditCard2 = new CreditCard2("6541890929394123", new Date("12/12/2022 20:00:00 GMT"), "444", CreditcardType.BCG_GLOBAL);
+        CreditCard2 creditCard3 = new CreditCard2("38998374783932", new Date("12/12/2023 10:00:00 GMT"), "123", CreditcardType.CARTE_BLANCHE);
+        CreditCard2 creditCard4 = new CreditCard2("30534958493821", new Date("12/9/2021 11:00:00 GMT"), "221", CreditcardType.DINERS_CLUB);
+        CreditCard2 creditCard5 = new CreditCard2("6521394792349124", new Date("12/11/2022 21:00:00 GMT"), "984", CreditcardType.DISCOVERY);
+        CreditCard2 creditCard6 = new CreditCard2("213183749245632", new Date("12/10/2023 22:00:00 GMT"), "032", CreditcardType.JCB);
         CreditCard2 creditCard7 = new CreditCard2("502045394045", new Date("12/12/2021 00:10:00 GMT"), "763", CreditcardType.MAESTRO);
         CreditCard2 creditCard8 = new CreditCard2("5188743672454325", new Date("12/12/2027 02:00:00 GMT"), "255", CreditcardType.VISA_MASTERCARD);
-        CreditCard2 creditCard9 = new CreditCard2("4989432785433", new Date("12/12/2018 09:00:00 GMT"), "174", CreditcardType.VISA);
-        CreditCard2 creditCard10 = new CreditCard2("6289482394753255", new Date("12/12/2017 10:10:00 GMT"), "671", CreditcardType.UNION_PAY);
+        CreditCard2 creditCard9 = new CreditCard2("4989432785433", new Date("12/12/2028 09:00:00 GMT"), "174", CreditcardType.VISA);
+        CreditCard2 creditCard10 = new CreditCard2("6289482394753255", new Date("12/12/2029 10:10:00 GMT"), "671", CreditcardType.UNION_PAY);
 
         entityManager.getTransaction().begin();
         CreditCard2 res1 = jpaCreditCardDao.persist(creditCard);

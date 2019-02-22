@@ -17,6 +17,11 @@ import static org.junit.Assert.assertEquals;
  */
 public class ItemOneTest {
 
+    /*
+    TODO
+    TESTS WILL FAIL BECAUSE OF DATE ISSUES
+     */
+
     private Validator validator;
 
     @Before
@@ -152,7 +157,7 @@ public class ItemOneTest {
     @Test
     public void shouldRaiseConstraintViolationsCausedByInvalidDate() throws Exception {
         ItemOne item = new ItemOne();
-        Date date = new Date("12/20/2017 20:00:00 GMT");
+        Date date = new Date("12/20/2019 20:00:00 GMT");
         item.setItemName("Dangerous");
         item.setItemType(ItemType.CD);
         item.setPrice(2f);

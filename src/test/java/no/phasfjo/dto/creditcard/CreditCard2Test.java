@@ -66,7 +66,7 @@ public class CreditCard2Test {
     @Test
     public void shouldRaiseConstraintViolationsCausedByInvalidCardNumberNotMatchStartWith99() throws Exception {
 
-        CreditCard2 creditCard1 = new CreditCard2("993456789065490", new Date("12/12/2018 20:00:00 GMT"), "123", CreditcardType.AMERICAN_EXPRESS);
+        CreditCard2 creditCard1 = new CreditCard2("993456789065490", new Date("12/12/2020 20:00:00 GMT"), "123", CreditcardType.AMERICAN_EXPRESS);
         Set<ConstraintViolation<CreditCard2>> violations = validator.validate(creditCard1);
         assertEquals(1, violations.size());
         assertEquals("Invalid paymentCard combination check the digits", violations.iterator().next().getMessage());
@@ -89,7 +89,7 @@ public class CreditCard2Test {
     @Test
     public void shouldRaiseConstraintViolationsCausedByInvalidCvcHasTwoNumbers() throws Exception {
 
-        CreditCard2 creditCard3 = new CreditCard2("343456789065490", new Date("12/12/2018 20:00:00 GMT"), "12", CreditcardType.AMERICAN_EXPRESS);
+        CreditCard2 creditCard3 = new CreditCard2("343456789065490", new Date("12/12/2020 20:00:00 GMT"), "12", CreditcardType.AMERICAN_EXPRESS);
         Set<ConstraintViolation<CreditCard2>> violations = validator.validate(creditCard3);
         assertEquals(1, violations.size());
         assertEquals("Invalid ccv must contain three digits", violations.iterator().next().getMessage());
@@ -103,7 +103,7 @@ public class CreditCard2Test {
     @Test
     public void shouldRaiseConstraintViolationsCausedByInvalidCardTitle() throws Exception {
 
-        CreditCard2 creditCard3 = new CreditCard2("343456789065490", new Date("12/12/2018 20:00:00 GMT"), "123", CreditcardType.DUMMY_NOT_IN_LIST);
+        CreditCard2 creditCard3 = new CreditCard2("343456789065490", new Date("12/12/2020 20:00:00 GMT"), "123", CreditcardType.DUMMY_NOT_IN_LIST);
         Set<ConstraintViolation<CreditCard2>> violations = validator.validate(creditCard3);
         assertEquals(1, violations.size());
         assertEquals("Invalid credit type, card must be in the list", violations.iterator().next().getMessage());
